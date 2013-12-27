@@ -10,5 +10,6 @@ require('proof')(1, function (step, deepEqual) {
         })()
     }, function () {
         deepEqual(copy, values, 'iterator')
+        iterator.unlock()
     })
 })
