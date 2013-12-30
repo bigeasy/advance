@@ -1,26 +1,26 @@
 {
-    "name":             "procede",
-    "version":          "0.0.1",
+    "name":             "advance",
+    "version":          "0.0.2",
     "author":           "Alan Gutierrez <alan@prettyrobots.com>",
     "description":      "In-memory forward iterator for use with the Strata b-tree MVCC tool collection.",
-    "url":              "http://bigeasy.github.com/procede",
+    "url":              "http://bigeasy.github.com/advance",
     "keywords":
     [
                         "btree", "leveldb", "levelup", "binary", "mvcc",
                         "database", "json", "b-tree", "concurrent", "persistence"
     ],
     "contributors":     [],
-    "homepage":         "https://github.com/bigeasy/procede",
+    "homepage":         "https://github.com/bigeasy/advance",
     "bugs":             "https://github.com/bigeasy/procede/issues",
     "licenses":
     [{
                         "type": "MIT",
-                        "url": "http://github.com/bigeasy/procede/raw/master/LICENSE"
+                        "url": "http://github.com/bigeasy/advance/raw/master/LICENSE"
     }],
     "repository":
     {
                         "type": "git",
-                        "url": "http://github.com/bigeasy/procede.git"
+                        "url": "http://github.com/bigeasy/advance.git"
     },
     "dependencies":
     {

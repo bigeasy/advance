@@ -1,15 +1,15 @@
-Procede
+Advance
 
 In-memory forward iterator for use with the Strata b-tree MVCC tool collection.
 
-    Documentation:  http://bigeasy.github.io/procede
-    Source:         http://github.com/bigeasy/procede
-    Issues:         http://github.com/bigeasy/procede/issues
+    Documentation:  http://bigeasy.github.io/advance
+    Source:         http://github.com/bigeasy/advance
+    Issues:         http://github.com/bigeasy/advance/issues
 
-    Install:        `npm install procede`
+    Install:        `npm install advance`
 
     License:        MIT
 
-To learn everything you want to know about Procede start here:
+To learn everything you want to know about Advance start here:
 
-    http://bigeasy.github.io/procede
+    http://bigeasy.github.io/advance
