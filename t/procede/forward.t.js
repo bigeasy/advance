@@ -1,15 +1,22 @@
-require('proof')(1, function (step, deepEqual) {
-    var values = 'a b c'.split(/\s+/), value, copy = []
-    var iterator = require('../..').forward(values)
+require('proof')(2, function (step, deepEqual) {
+    var values = 'a b c'.split(/\s+/), records = [], keys = []
+    var iterator = require('../..').forward(values, function (record, callback) {
+        callback(null, record, record)
+    })
     step(function () {
         step(function () {
             iterator.next(step())
-        }, function (record) {
-            if (!record) step(null)
-            else copy.push(record)
+        }, function (record, key) {
+            if (record && key) {
+                records.push(record)
+                keys.push(key)
+            } else {
+                step(null)
+            }
         })()
     }, function () {
-        deepEqual(copy, values, 'iterator')
+        deepEqual(records, values, 'records')
+        deepEqual(keys, values, 'keys')
         iterator.unlock()
     })
 })
