@@ -1,6 +1,6 @@
 require('proof')(2, function (step, deepEqual) {
     var values = 'a b c'.split(/\s+/), records = [], keys = []
-    var iterator = require('../..').forward(values, function (record, callback) {
+    var iterator = require('../..')(values, function (record, callback) {
         callback(null, record, record)
     })
     step(function () {

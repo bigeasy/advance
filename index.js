@@ -15,6 +15,6 @@ Advance.prototype.next = function (callback) {
 Advance.prototype.unlock = function () {
 }
 
-exports.forward = function (array, fixup) {
+module.exports = function (array, fixup) {
     return new Advance(array, fixup)
 }
