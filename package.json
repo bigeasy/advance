@@ -14,8 +14,8 @@
     "bugs":             "https://github.com/bigeasy/procede/issues",
     "licenses":
     [{
-                        "type": "MIT",
-                        "url": "http://github.com/bigeasy/advance/raw/master/LICENSE"
+                        "type": "LGPL-3.0",
+                        "url": "http://github.com/bigeasy/advance/raw/master/COPYING.LESSER"
     }],
     "repository":
     {
