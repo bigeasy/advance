@@ -10,7 +10,7 @@ In-memory forward iterator for use with the Strata b-tree MVCC tool collection.
 
     Install:        `npm install advance`
 
-    License:        LGPL 3.0
+    License:        GNU Affero GPL 3.0
 
 To learn everything you want to know about Advance start here:
 

@@ -14,8 +14,8 @@
     "bugs":             "https://github.com/bigeasy/advance/issues",
     "licenses":
     [{
-                        "type": "LGPL-3.0",
-                        "url": "http://github.com/bigeasy/advance/raw/master/COPYING.LESSER"
+                        "type": "GNU Affero GPL 3.0",
+                        "url": "http://github.com/bigeasy/advance/raw/master/COPYING"
     }],
     "repository":
     {
