@@ -14,8 +14,8 @@
     "bugs":             "https://github.com/bigeasy/advance/issues",
     "licenses":
     [{
-                        "type": "GNU Affero GPL 3.0",
-                        "url": "http://github.com/bigeasy/advance/raw/master/COPYING"
+                        "type": "MIT",
+                        "url": "http://github.com/bigeasy/advance/raw/master/LICENSE"
     }],
     "repository":
     {
