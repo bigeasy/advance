@@ -9,7 +9,7 @@
                         "database", "json", "b-tree", "concurrent", "persistence"
     ],
     "contributors":     [],
-    "homepage":         "https://github.com/bigeasy/advance",
+    "homepage":         "https://bigeasy.github.io/advance",
     "bugs":             "https://github.com/bigeasy/advance/issues",
     "licenses":
     [{
