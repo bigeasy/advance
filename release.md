@@ -1,5 +1,6 @@
 ### Issue by Issue
 
+ * Release version 0.0.6. #31.
  * Change "homepage" to GitHub Pages. #30.
  * Upgrade Proof to 0.0.44. #29.
  * Add contribution guild. #28.
