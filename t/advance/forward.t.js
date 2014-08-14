@@ -17,6 +17,6 @@ require('proof')(2, function (step, deepEqual) {
     }, function () {
         deepEqual(records, values, 'records')
         deepEqual(keys, values, 'keys')
-        iterator.unlock()
+        iterator.unlock(step())
     })
 })
