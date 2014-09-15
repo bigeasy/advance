@@ -1,5 +1,6 @@
 ### Issue by Issue
 
+ * Upgrade Proof to 0.0.48. #36.
  * Upgrade Proof to 0.0.47. #35.
  * Release version 0.0.6. #31.
  * Change "homepage" to GitHub Pages. #30.
