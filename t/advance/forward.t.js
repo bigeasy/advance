@@ -1,22 +1,22 @@
-require('proof')(2, require('cadence')(function (step, assert) {
+require('proof')(2, require('cadence')(function (async, assert) {
     var values = 'a b c'.split(/\s+/), records = [], keys = []
     var iterator = require('../..')(values, function (record, callback) {
         callback(null, record, record)
     })
-    step(function () {
-        step(function () {
-            iterator.next(step())
+    async(function () {
+        async(function () {
+            iterator.next(async())
         }, function (record, key) {
             if (record && key) {
                 records.push(record)
                 keys.push(key)
             } else {
-                return [ step ]
+                return [ async ]
             }
         })()
     }, function () {
         assert(records, values, 'records')
         assert(keys, values, 'keys')
-        iterator.unlock(step())
+        iterator.unlock(async())
     })
 }))
