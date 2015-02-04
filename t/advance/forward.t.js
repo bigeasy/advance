@@ -1,4 +1,6 @@
-require('proof')(2, require('cadence')(function (async, assert) {
+require('proof')(2, require('cadence')(prove))
+
+function prove (async, assert) {
     var values = 'a b c'.split(/\s+/), records = [], keys = []
     var iterator = require('../..')(values, function (record, callback) {
         callback(null, record, record)
@@ -19,4 +21,4 @@ require('proof')(2, require('cadence')(function (async, assert) {
         assert(keys, values, 'keys')
         iterator.unlock(async())
     })
-}))
+}

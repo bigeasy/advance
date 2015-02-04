@@ -1,4 +1,5 @@
 ### Issue by Issue
 
+ * Use a `prove` named function in tests. #42.
  * Rename `step` to `async`. #41.
  * Upgrade Proof to 0.0.50. #37.
