@@ -1,15 +1,11 @@
-function Advance (array, fixup) {
+function Advance (array) {
     this._array = array
-    this._fixup = fixup
-    this._index = 0
 }
 
 Advance.prototype.next = function (callback) {
-    if (this._index < this._array.length) {
-        this._fixup(this._array[this._index++], callback)
-    } else {
-        callback()
-    }
+    var array = this._array
+    this._array = null
+    callback(null, array)
 }
 
 Advance.prototype.unlock = function (callback) {
