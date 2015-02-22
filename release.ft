@@ -1,5 +1,6 @@
 ### Issue by Issue
 
+ * Upgrade to Cadence Redux. #48.
  * Implement new `get` interface. #47.
  * Implement by array interface. #45.
  * Remove `require.t.js`. #43.
