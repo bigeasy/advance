@@ -1,5 +1,6 @@
 ### Issue by Issue
 
+ * Implement new `get` interface. #47.
  * Implement by array interface. #45.
  * Remove `require.t.js`. #43.
  * Use a `prove` named function in tests. #42.
