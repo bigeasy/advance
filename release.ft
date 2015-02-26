@@ -1,5 +1,6 @@
 ### Issue by Issue
 
+ * Implement reverse iterator. #50.
  * Upgrade to Cadence Redux. #48.
  * Implement new `get` interface. #47.
  * Implement by array interface. #45.

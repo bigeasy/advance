@@ -1,13 +1,13 @@
-function Advance (array) {
+function Forward (array) {
     this._array = array
     this._index = 0
 }
 
-Advance.prototype.get = function () {
+Forward.prototype.get = function () {
     return this._array[this._index++]
 }
 
-Advance.prototype.next = function (callback) {
+Forward.prototype.next = function (callback) {
     if (this._index >= this._array.length) {
         callback(null, false)
     } else {
@@ -15,10 +15,35 @@ Advance.prototype.next = function (callback) {
     }
 }
 
-Advance.prototype.unlock = function (callback) {
+Forward.prototype.unlock = function (callback) {
     callback()
 }
 
-module.exports = function (array) {
-    return new Advance(array)
+exports.forward = function (array) {
+    return new Forward(array)
+}
+
+function Reverse (array) {
+    this._array = array
+    this._index = array.length - 1
+}
+
+Reverse.prototype.get = function () {
+    return this._array[this._index--]
+}
+
+Reverse.prototype.next = function (callback) {
+    if (this._index < 0) {
+        callback(null, false)
+    } else {
+        callback(null, true)
+    }
+}
+
+Reverse.prototype.unlock = function (callback) {
+    callback()
+}
+
+exports.reverse = function (array) {
+    return new Reverse(array)
 }
