@@ -1,6 +1,6 @@
-function Forward (array) {
+function Forward (array, index) {
     this._array = array
-    this._index = 0
+    this._index = index == null ? 0 : index
 }
 
 Forward.prototype.get = function () {
@@ -19,13 +19,13 @@ Forward.prototype.unlock = function (callback) {
     callback()
 }
 
-exports.forward = function (array) {
-    return new Forward(array)
+exports.forward = function (array, index) {
+    return new Forward(array, index)
 }
 
-function Reverse (array) {
+function Reverse (array, index) {
     this._array = array
-    this._index = array.length - 1
+    this._index = index == null ? array.length - 1 : index
 }
 
 Reverse.prototype.get = function () {
@@ -44,6 +44,6 @@ Reverse.prototype.unlock = function (callback) {
     callback()
 }
 
-exports.reverse = function (array) {
-    return new Reverse(array)
+exports.reverse = function (array, index) {
+    return new Reverse(array, index)
 }
