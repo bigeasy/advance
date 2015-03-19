@@ -4,8 +4,10 @@ function prove (async, assert) {
     var values = [ 'a', 'b', 'c' ]
     var advance = require('../..')
     var iterator
+    function extractor (record) { return record }
+    function comparator (a, b) { return a < b ? -1 : a > b ? 1 : 0 }
     async(function () {
-        iterator = advance.reverse(values)
+        iterator = advance.reverse(extractor, comparator, values)
         iterator.next(async())
     }, function (more) {
         assert(more, 'more')
@@ -20,7 +22,7 @@ function prove (async, assert) {
     }, function () {
         iterator.unlock(async())
     }, function () {
-        iterator = advance.reverse(values, 1)
+        iterator = advance.reverse(extractor, comparator, values, 1)
         iterator.next(async())
     }, function (more) {
         assert(more, 'more')
