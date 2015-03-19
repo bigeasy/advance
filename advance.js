@@ -1,13 +1,13 @@
 var util = require('util')
 
-function scan () {
+function scan (offset) {
     if (this._previous != null) {
         var extractor = this._extractor,
             comparator = this._comparator,
             marker = extractor(this._previous)
         for (;;) {
-            var current = extractor(this._array[this._index])
-            if (this._comparator(current, marker) > 0) {
+            var current = extractor(this._array[this._index + offset])
+            if (this._comparator(current, marker) === 0) {
                 break
             }
             this._index++
@@ -27,7 +27,7 @@ function Forward (extractor, comparator, array, index) {
 Forward.prototype.get = function () {
     var array = this._array
     if (this._length !== array.length) {
-        scan.call(this)
+        scan.call(this, -1)
     }
     return this._previous = array[this._index++]
 }
@@ -59,7 +59,7 @@ function Reverse (extractor, comparator, array, index) {
 Reverse.prototype.get = function () {
     var array = this._array
     if (this._length !== array.length) {
-        scan.call(this)
+        scan.call(this, 1)
     }
     return this._previous = array[this._index--]
 }
