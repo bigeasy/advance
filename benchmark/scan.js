@@ -27,16 +27,14 @@ function _fn () {
     })
 }
 
-console.log('here')
-
 for (var i = 1; i <= 3; i++)  {
     suite.add({
-        name: '_pair compare ' + i,
+        name: '_advance compare ' + i,
         fn: _fn
     })
 
     suite.add({
-        name: ' pair compare ' + i,
+        name: ' advance compare ' + i,
         fn: fn
     })
 }
