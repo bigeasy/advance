@@ -1,4 +1,4 @@
-require('proof')(6, require('cadence/redux')(prove))
+require('proof')(12, require('cadence/redux')(prove))
 
 function prove (async, assert) {
     var values = [ 'a', 'b', 'c' ]
@@ -36,5 +36,43 @@ function prove (async, assert) {
         assert(!more, 'no more with index')
     }, function () {
         iterator.unlock(async())
+    }, function () {
+        iterator = advance.reverse(extractor, comparator, values)
+        iterator.next(async())
+    }, function (more) {
+        assert(more, 'more')
+        var items = [], item
+        values.push('d')
+        items.push(iterator.get())
+        values.push('e')
+        items.push(iterator.get())
+        values.unshift('!', '?')
+        while (item = iterator.get()) {
+            items.push(item)
+        }
+        assert(items, [ 'c', 'b', 'a', '?', '!' ], 'values unshifted')
+        iterator.next(async())
+    }, function (more) {
+        assert(!more, 'no more unshifted')
+        iterator.unlock(async())
+    }, function () {
+        values = [ 'a', 'b', 'c', 'd' ]
+        iterator = advance.reverse(extractor, comparator, values, values.length - 2)
+        iterator.next(async())
+    }, function (more) {
+        assert(more, 'more unshifted with index')
+        var items = [], item
+        values.push('d')
+        items.push(iterator.get())
+        values.push('e')
+        items.push(iterator.get())
+        values.unshift('!', '?')
+        while (item = iterator.get()) {
+            items.push(item)
+        }
+        assert(items, [ 'c', 'b', 'a', '?', '!' ], 'values unshifted')
+        iterator.next(async())
+    }, function (more) {
+        assert(!more, 'no more unshifted with index')
     })
 }

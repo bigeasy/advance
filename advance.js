@@ -1,10 +1,10 @@
 var util = require('util')
 
-function scan (offset) {
-    if (this._previous != null) {
+function scan (sought, offset) {
+    if (sought != null) {
         var extractor = this._extractor,
             comparator = this._comparator,
-            marker = extractor(this._previous)
+            marker = extractor(sought)
         for (;;) {
             var current = extractor(this._array[this._index + offset])
             if (this._comparator(current, marker) === 0) {
@@ -12,8 +12,10 @@ function scan (offset) {
             }
             this._index++
         }
-        this._length = this._array.length
+    } else {
+        scan.call(this, this._start, 0)
     }
+    this._length = this._array.length
 }
 
 function Forward (extractor, comparator, array, index) {
@@ -22,12 +24,13 @@ function Forward (extractor, comparator, array, index) {
     this._array = array
     this._length = array.length
     this._index = index == null ? 0 : index
+    this._start = array[this._index]
 }
 
 Forward.prototype.get = function () {
     var array = this._array
     if (this._length !== array.length) {
-        scan.call(this, -1)
+        scan.call(this, this._previous, -1)
     }
     return this._previous = array[this._index++]
 }
@@ -53,13 +56,15 @@ function Reverse (extractor, comparator, array, index) {
     this._comparator = comparator
     this._array = array
     this._length = array.length
+    this._startIndex = index
     this._index = index == null ? array.length - 1 : index
+    this._start = array[this._index]
 }
 
 Reverse.prototype.get = function () {
     var array = this._array
     if (this._length !== array.length) {
-        scan.call(this, 1)
+        scan.call(this, this._previous, 1)
     }
     return this._previous = array[this._index--]
 }
