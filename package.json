@@ -1,6 +1,6 @@
 {
     "name":             "advance",
-    "version":          "0.0.13",
+    "version":          "0.0.14",
     "author":           "Alan Gutierrez <alan@prettyrobots.com>",
     "description":      "In-memory forward iterator for use with the Strata b-tree MVCC tool collection.",
     "keywords":
