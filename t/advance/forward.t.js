@@ -4,10 +4,9 @@ function prove (async, assert) {
     var values = [ 'a', 'b', 'c' ]
     var advance = require('../..')
     var iterator
-    function extractor (record) { return record }
     function comparator (a, b) { return a < b ? -1 : a > b ? 1 : 0 }
     async(function () {
-        iterator = advance.forward(extractor, comparator, values)
+        iterator = advance.forward(comparator, values)
         iterator.next(async())
     }, function (more) {
         assert(more, 'more')
@@ -21,7 +20,7 @@ function prove (async, assert) {
         assert(!more, 'no more')
         iterator.unlock(async())
     }, function () {
-        iterator = advance.forward(extractor, comparator, values, 1)
+        iterator = advance.forward(comparator, values, 1)
         iterator.next(async())
     }, function (more) {
         assert(more, 'more')
@@ -35,7 +34,7 @@ function prove (async, assert) {
         assert(!more, 'no more with index')
         iterator.unlock(async())
     }, function () {
-        iterator = advance.forward(extractor, comparator, values, 1)
+        iterator = advance.forward(comparator, values, 1)
         iterator.next(async())
     }, function (more) {
         assert(more, 'more')
