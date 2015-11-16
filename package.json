@@ -11,11 +11,7 @@
     "contributors":     [],
     "homepage":         "https://bigeasy.github.io/advance",
     "bugs":             "https://github.com/bigeasy/advance/issues",
-    "licenses":
-    [{
-                        "type": "MIT",
-                        "url": "http://github.com/bigeasy/advance/raw/master/LICENSE"
-    }],
+    "license":          "MIT",
     "repository":
     {
                         "type": "git",
