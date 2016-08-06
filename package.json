@@ -1,7 +1,6 @@
 {
     "name":                 "advance",
     "version":              "1.0.0",
-    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
     "description":
 
       "In-memory forward iterator for use with the Strata b-tree MVCC tool collection.",
@@ -11,6 +10,7 @@
                             "btree", "leveldb", "levelup", "binary", "mvcc",
                             "database", "json", "b-tree", "concurrent", "persistence"
     ],
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
     "homepage":             "https://bigeasy.github.io/advance",
     "bugs":                 "https://github.com/bigeasy/advance/issues",
     "license":              "MIT",
@@ -19,7 +19,6 @@
                             "type": "git",
                             "url": "http://github.com/bigeasy/advance.git"
     },
-    "main":                 "advance",
     "dependencies":
     {
     },
@@ -28,6 +27,7 @@
                             "cadence":                      "1.x",
                             "proof":                        "1.x"
     },
+    "main":                 "advance",
     "scripts":
     {
                             "test": "proof platform win32 && proof test */*/*.t.js || t/test"
