@@ -1,12 +1,12 @@
-require('proof')(9, require('cadence')(prove))
+require('proof')(12, require('cadence')(prove))
 
 function prove (async, assert) {
     var values = [ 'a', 'b', 'c' ]
-    var advance = require('../..')
+    var advance = require('..')
     var iterator
     function comparator (a, b) { return a < b ? -1 : a > b ? 1 : 0 }
     async(function () {
-        iterator = advance.forward(comparator, values)
+        iterator = advance.reverse(comparator, values)
         iterator.next(async())
     }, function (more) {
         assert(more, 'more')
@@ -14,13 +14,14 @@ function prove (async, assert) {
         while (item = iterator.get()) {
             items.push(item)
         }
-        assert(items, [ 'a', 'b', 'c' ], 'next')
+        assert(items, [ 'c', 'b', 'a' ], 'next')
         iterator.next(async())
     }, function (more) {
         assert(!more, 'no more')
+    }, function () {
         iterator.unlock(async())
     }, function () {
-        iterator = advance.forward(comparator, values, 1)
+        iterator = advance.reverse(comparator, values, 1)
         iterator.next(async())
     }, function (more) {
         assert(more, 'more')
@@ -28,13 +29,14 @@ function prove (async, assert) {
         while (item = iterator.get()) {
             items.push(item)
         }
-        assert(items, [ 'b', 'c' ], 'next with index')
+        assert(items, [ 'b', 'a' ], 'next with index')
         iterator.next(async())
     }, function (more) {
         assert(!more, 'no more with index')
+    }, function () {
         iterator.unlock(async())
     }, function () {
-        iterator = advance.forward(comparator, values, 1)
+        iterator = advance.reverse(comparator, values)
         iterator.next(async())
     }, function (more) {
         assert(more, 'more')
@@ -47,10 +49,29 @@ function prove (async, assert) {
         while (item = iterator.get()) {
             items.push(item)
         }
-        assert(items, [ 'b', 'c', 'd', 'e' ], 'values unshifted')
+        assert(items, [ 'c', 'b', 'a', '?', '!' ], 'values unshifted')
         iterator.next(async())
     }, function (more) {
         assert(!more, 'no more unshifted')
         iterator.unlock(async())
+    }, function () {
+        values = [ 'a', 'b', 'c', 'd' ]
+        iterator = advance.reverse(comparator, values, values.length - 2)
+        iterator.next(async())
+    }, function (more) {
+        assert(more, 'more unshifted with index')
+        var items = [], item
+        values.push('d')
+        items.push(iterator.get())
+        values.push('e')
+        items.push(iterator.get())
+        values.unshift('!', '?')
+        while (item = iterator.get()) {
+            items.push(item)
+        }
+        assert(items, [ 'c', 'b', 'a', '?', '!' ], 'values unshifted')
+        iterator.next(async())
+    }, function (more) {
+        assert(!more, 'no more unshifted with index')
     })
 }
