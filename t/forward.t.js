@@ -1,4 +1,4 @@
-require('proof')(9, require('cadence')(prove))
+require('proof/redux')(9, require('cadence')(prove))
 
 function prove (async, assert) {
     var values = [ 'a', 'b', 'c' ]
