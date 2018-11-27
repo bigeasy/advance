@@ -1,6 +1,6 @@
 require('proof')(9, require('cadence')(prove))
 
-function prove (async, assert) {
+function prove (async, okay) {
     var values = [ 'a', 'b', 'c' ]
     var advance = require('..')
     var iterator
@@ -9,35 +9,35 @@ function prove (async, assert) {
         iterator = advance.forward(comparator, values)
         iterator.next(async())
     }, function (more) {
-        assert(more, 'more')
+        okay(more, 'more')
         var items = [], item
         while (item = iterator.get()) {
             items.push(item)
         }
-        assert(items, [ 'a', 'b', 'c' ], 'next')
+        okay(items, [ 'a', 'b', 'c' ], 'next')
         iterator.next(async())
     }, function (more) {
-        assert(!more, 'no more')
+        okay(!more, 'no more')
         iterator.unlock(async())
     }, function () {
         iterator = advance.forward(comparator, values, 1)
         iterator.next(async())
     }, function (more) {
-        assert(more, 'more')
+        okay(more, 'more')
         var items = [], item
         while (item = iterator.get()) {
             items.push(item)
         }
-        assert(items, [ 'b', 'c' ], 'next with index')
+        okay(items, [ 'b', 'c' ], 'next with index')
         iterator.next(async())
     }, function (more) {
-        assert(!more, 'no more with index')
+        okay(!more, 'no more with index')
         iterator.unlock(async())
     }, function () {
         iterator = advance.forward(comparator, values, 1)
         iterator.next(async())
     }, function (more) {
-        assert(more, 'more')
+        okay(more, 'more')
         var items = [], item
         values.push('d')
         items.push(iterator.get())
@@ -47,10 +47,10 @@ function prove (async, assert) {
         while (item = iterator.get()) {
             items.push(item)
         }
-        assert(items, [ 'b', 'c', 'd', 'e' ], 'values unshifted')
+        okay(items, [ 'b', 'c', 'd', 'e' ], 'values unshifted')
         iterator.next(async())
     }, function (more) {
-        assert(!more, 'no more unshifted')
+        okay(!more, 'no more unshifted')
         iterator.unlock(async())
     })
 }
