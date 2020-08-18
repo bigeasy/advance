@@ -1,9 +1,9 @@
 require('proof')(1, async okay => {
-    const advance = require('..')
+    const advance = { forward: require('../forward') }
 
     {
         const gathered = []
-        for await (const items of new advance.Forward([ [ 1, 2 ], [ 3, 4, 5 ] ])) {
+        for await (const items of new advance.forward([ [ 1, 2 ], [ 3, 4, 5 ] ])) {
             for (const item of items) {
                 gathered.push(item)
             }
