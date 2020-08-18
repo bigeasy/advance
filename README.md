@@ -1,26 +1,20 @@
+[![Actions Status](https://github.com/bigeasy/advance/workflows/Node%20CI/badge.svg)](https://github.com/bigeasy/advance/actions)
+[![codecov](https://codecov.io/gh/bigeasy/advance/branch/master/graph/badge.svg)](https://codecov.io/gh/bigeasy/advance)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 In-memory forward iterator for use with the Strata b-tree MVCC tool collection.
 
-```javascript
-function comparator (a, b) { return +a - +b }
+| What          | Where                                         |
+| --- | --- |
+| Discussion    | https://github.com/bigeasy/advance/issues/1   |
+| Documentation | https://bigeasy.github.io/advance             |
+| Source        | https://github.com/bigeasy/advance            |
+| Issues        | https://github.com/bigeasy/advance/issues     |
+| CI            | https://travis-ci.org/bigeasy/advance         |
+| Coverage:     | https://codecov.io/gh/bigeasy/advance         |
+| License:      | MIT                                           |
 
-var test = cadence(function () {
-    var iterator
-    async(function () {
-        iterator = advance.forward(comparator, [ 1, 2, 3 ])
-        iterator.next(async())
-    }, function (more) {
-        assert.ok(more)
-        var items = [], item
-        while (item = iterator.get()) {
-            items.push(item)
-        }
-        assert.deepEqual(items, [ 1, 2, 3 ], 'next')
-        iterator.next(async())
-    }, function (more) {
-        assert.ok(!more)
-        iterator.unlock(async())
-    })
-})
 
-test(function (error) { if (error) throw error })
+```
+npm install advance
 ```
