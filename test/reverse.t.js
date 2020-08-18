@@ -1,5 +1,5 @@
 require('proof')(1, async okay => {
-    const advance = { reverse: require('../reverse') }
+    const advance = require('..')
 
     {
         const gathered = []
