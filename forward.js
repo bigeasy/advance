@@ -1,18 +1,14 @@
 module.exports = function (arrays) {
     let index = 0
-
-    return {
-        [Symbol.asyncIterator]: function () {
-            return this
-        },
-        next: function () {
+    const iterator = {
+        done: false,
+        next (promises, consume, terminator = iterator) {
             if (index == arrays.length) {
-                return { done: true }
-            }
-            return {
-                done: false,
-                value: arrays[index++]
+                terminator.done = true
+            } else {
+                consume(arrays[index++])
             }
         }
     }
+    return iterator
 }
