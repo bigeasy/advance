@@ -3,7 +3,7 @@ module.exports = function (arrays, { reverse = false } = {}) {
         let index = arrays.length - 1
         const iterator = {
             done: false,
-            reverse: true,
+            type: 1,
             next (promises, consume, terminator = iterator) {
                 if (index == -1) {
                     terminator.done = true
@@ -17,7 +17,7 @@ module.exports = function (arrays, { reverse = false } = {}) {
         let index = 0
         const iterator = {
             done: false,
-            reverse: false,
+            type: 0,
             next (promises, consume, terminator = iterator) {
                 if (index == arrays.length) {
                     terminator.done = true
