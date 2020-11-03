@@ -1,4 +1,4 @@
-module.exports = function (arrays, { reverse = false } = {}) {
+module.exports = function (arrays, { reverse = false, set = false } = {}) {
     if (reverse) {
         let index = arrays.length - 1
         const iterator = {
@@ -17,7 +17,7 @@ module.exports = function (arrays, { reverse = false } = {}) {
         let index = 0
         const iterator = {
             done: false,
-            type: 0,
+            type: set ? 2 : 0,
             next (promises, consume, terminator = iterator) {
                 if (index == arrays.length) {
                     terminator.done = true
