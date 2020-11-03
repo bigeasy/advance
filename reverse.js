@@ -2,6 +2,7 @@ module.exports = function (arrays) {
     let index = arrays.length - 1
     const iterator = {
         done: false,
+        reverse: true,
         next (promises, consume, terminator = iterator) {
             if (index == -1) {
                 terminator.done = true
