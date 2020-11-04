@@ -1,6 +1,6 @@
 {
     "name":                 "advance",
-    "version":              "3.0.0-alpha.6",
+    "version":              "3.0.0-alpha.7",
     "description":
 
       "In-memory forward iterator for use with the Strata b-tree MVCC tool collection.",
